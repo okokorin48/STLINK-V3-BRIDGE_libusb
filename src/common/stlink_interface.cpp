@@ -216,11 +216,12 @@ STLinkInterface::STLink_OpenDevice(TEnumStlinkInterface IfId,
     }
 
     if (bExclusiveAccess != 0) {
-        return SS_CMD_NOT_AVAILABLE;
+        //return SS_CMD_NOT_AVAILABLE;
     }
 
-    if (DevIdxInList >= cnt)
+    if (DevIdxInList >= cnt) {
         return SS_BAD_PARAMETER;
+    }
 
     libusb_device *dev = devices[DevIdxInList];
     libusb_device_handle *handle = nullptr;
@@ -635,7 +636,7 @@ STLinkInterface::OpenDevice(int StlinkInstId,
                 STLink_OpenDevice(m_ifId, StlinkInstId,
                                   (bOpenExclusive == true) ? 1 : 0, pHandle);
             if (status != SS_OK) {
-                LogTrace("%s STLink device USB connection failure",
+                LogTrace("%s STLink interface USB connection failure",
                          LogIfString[m_ifId]);
                 ifStatus = STLINKIF_CONNECT_ERR;
             }
