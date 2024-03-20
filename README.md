@@ -8,6 +8,13 @@ Original version can be downloaded from here:
 
 https://www.st.com/en/development-tools/stlink-v3-bridge.html
 
+# pre-Building
+may require to install python venv and pip meson version 1.1 or higher:
+
+python -m venv meson_req
+source meson_req/bin/activate
+pip install meson
+
 # Building
 This project uses the [meson build system](https://mesonbuild.com), however there are some wrapper `make` commands for convenience.
 * `make` or `make all` to build the library and example.
